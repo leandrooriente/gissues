@@ -1,0 +1,48 @@
+body {
+  background: #f2f2f2;
+}
+
+.wrap {
+  max-width: 980px;
+  padding: 0 10px;
+  margin: 0 auto;
+}
+
+.page-title {
+  margin: 12px 0 36px;
+}
+
+.title {
+  background-color: #f2f2f2 !important;
+}
+
+.results {
+  margin: 24px auto;
+}
+
+.result-item {
+  margin-bottom: 24px !important;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nes-field {
+  margin-bottom: 24px;
+}
+
+.nes-badge {
+  width: auto;
+  height: auto;
+  font-size: 0.5rem;
+  text-transform: uppercase;
+  margin: 0 15px 15px 0;
+}
+
+.nes-badge span {
+  position: relative !important;
+  display: inline-block !important;
+  padding: 0 12px !important;
+}
