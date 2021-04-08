@@ -1,7 +1,11 @@
-import "./App.css";
+import { BrowserRouter } from "react-router-dom";
 
-function App() {
-  return <h1>Hello there</h1>;
-}
+const App = (): React.ReactElement => {
+  return (
+    <BrowserRouter>
+      <h1>Hello there</h1>
+    </BrowserRouter>
+  );
+};
 
 export default App;
