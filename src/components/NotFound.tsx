@@ -1,3 +1,5 @@
+import React from "react";
+
 export const NotFound = (): React.ReactElement => {
   return (
     <main className="wrap results">
