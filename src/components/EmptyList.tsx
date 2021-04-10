@@ -1,8 +1,9 @@
 import React from "react";
+import { Page } from "./Page";
 
 export const EmptyList = (): React.ReactElement => {
   return (
-    <main className="wrap results">
+    <Page>
       <div className="nes-container with-title">
         <h3 className="title">Results</h3>
 
@@ -17,6 +18,6 @@ export const EmptyList = (): React.ReactElement => {
           </div>
         </div>
       </div>
-    </main>
+    </Page>
   );
 };

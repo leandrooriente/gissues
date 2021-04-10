@@ -1,14 +1,25 @@
-import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useHistory, useParams } from "react-router-dom";
+import { ListPageParamTypes } from "./Routes";
 
 export const Header = (): React.ReactElement => {
   const history = useHistory();
-  const [organization, setOrganization] = useState("");
-  const [repository, setRepository] = useState("");
+  const {
+    organization: organizationURLParam,
+    repository: repositoryURLParam,
+  } = useParams<ListPageParamTypes>();
+
+  const [organization, setOrganization] = useState(organizationURLParam);
+  const [repository, setRepository] = useState(repositoryURLParam);
+
+  useEffect(() => {
+    setOrganization(organizationURLParam);
+    setRepository(repositoryURLParam);
+  }, [organizationURLParam, repositoryURLParam]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    history.push(`/${organization}/${repository}`);
+    history.push(`/${organization}/${repository}/1`);
   };
 
   const handleOrganizationChange = (e: React.FormEvent<HTMLInputElement>) => {

@@ -1,27 +1,23 @@
-import React from "react";
+import React, { Fragment } from "react";
 
 export const NotFound = (): React.ReactElement => {
   return (
-    <main className="wrap results">
-      <div className="nes-container with-title">
-        <h3 className="title">Not Found</h3>
+    <Fragment>
+      <i className="nes-icon is-large heart"></i>
+      <i className="nes-icon is-large heart"></i>
+      <i className="nes-icon is-large heart"></i>
+      <i className="nes-icon is-large is-half heart"></i>
+      <i className="nes-icon is-large is-transparent heart"></i>
 
-        <i className="nes-icon is-large heart"></i>
-        <i className="nes-icon is-large heart"></i>
-        <i className="nes-icon is-large heart"></i>
-        <i className="nes-icon is-large is-half heart"></i>
-        <i className="nes-icon is-large is-transparent heart"></i>
+      <p>
+        Sorry, but either this repository doesn't exist or it doesn't have any
+        issues.
+      </p>
 
-        <p>
-          Sorry, but either this repository doesn't exist or it doesn't have any
-          issues.
-        </p>
-
-        <p>
-          Try another combination like "facebook"/"react". There is a lot of
-          issues there.
-        </p>
-      </div>
-    </main>
+      <p>
+        Try another combination like "facebook/react". There is a lot of issues
+        there.
+      </p>
+    </Fragment>
   );
 };

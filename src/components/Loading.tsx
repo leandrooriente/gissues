@@ -4,8 +4,8 @@ export const Loading = (): React.ReactElement => {
   const [loaded, setLoaded] = useState(0);
   useEffect(() => {
     const interval = setInterval(() => {
-      setLoaded(loaded + 10);
-    }, 400);
+      setLoaded(loaded + 20);
+    }, 250);
 
     if (loaded === 100) {
       clearInterval(interval);
@@ -14,12 +14,10 @@ export const Loading = (): React.ReactElement => {
   }, [loaded]);
 
   return (
-    <main className="wrap results">
-      <div className="nes-container with-title">
-        <h3 className="title">Loading</h3>
-
-        <progress className="nes-progress" value={loaded} max="100"></progress>
-      </div>
-    </main>
+    <progress
+      className="nes-progress loader"
+      value={loaded}
+      max="100"
+    ></progress>
   );
 };

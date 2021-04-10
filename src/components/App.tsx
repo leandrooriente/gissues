@@ -1,16 +1,14 @@
 import React from "react";
-import { BrowserRouter } from "react-router-dom";
-
-import { Header } from "./Header";
+import { Provider } from "react-redux";
 import { Routes } from "./Routes";
+import { store } from "../store";
 import "nes.css/css/nes.min.css";
 import "./style.css";
 
 export const App = (): React.ReactElement => {
   return (
-    <BrowserRouter>
-      <Header />
+    <Provider store={store}>
       <Routes />
-    </BrowserRouter>
+    </Provider>
   );
 };
