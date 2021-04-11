@@ -37,8 +37,14 @@ body {
   margin: var(--gutter-double) auto;
 }
 
+.result-list {
+  margin: 0;
+  padding: 0;
+}
+
 .result-item {
-  margin-bottom: var(--gutter-double) !important;
+  list-style: none;
+  margin: 0 0 var(--gutter-double) 0 !important;
 }
 
 .loader {

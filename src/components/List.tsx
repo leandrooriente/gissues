@@ -5,6 +5,7 @@ import { ListPageParamTypes } from "./Routes";
 import { Page } from "./Page";
 import { Loading } from "./Loading";
 import { NotFound } from "./NotFound";
+import { FormatedDate } from "./Date";
 import { fetchIssues } from "../features/issues";
 import { RootState } from "../store";
 
@@ -48,9 +49,13 @@ export const List = (): React.ReactElement => {
         ) : null}
 
         {status === "LOADED" ? (
-          <div data-test-id="result-list">
+          <ul
+            aria-label="issues"
+            className="result-list"
+            data-test-id="result-list"
+          >
             {issues.map((issue) => (
-              <div
+              <li
                 key={issue.id}
                 className="result-item nes-container is-rounded"
               >
@@ -63,11 +68,13 @@ export const List = (): React.ReactElement => {
                 ))}
 
                 <p className="nes-text">
-                  #21002 opened 25 days ago by fast-reflexes
+                  #{issue.number} opened{" "}
+                  <FormatedDate>{issue.created_at}</FormatedDate> by{" "}
+                  {issue.user?.login}
                 </p>
-              </div>
+              </li>
             ))}
-          </div>
+          </ul>
         ) : null}
 
         {hasPreviousPage || hasNextPage ? (

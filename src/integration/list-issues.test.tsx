@@ -1,5 +1,5 @@
 import fetchMock from "jest-fetch-mock";
-import { screen, waitFor } from "@testing-library/react";
+import { screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { renderApp } from "./render-integration-app";
 
@@ -49,29 +49,31 @@ describe("ForgotPassword Integration", () => {
   });
 
   it("Should render issues on the result page", async () => {
+    const issues = [
+      {
+        id: 854999068,
+        number: 21229,
+        title:
+          "Fix: Don't flush discrete updates at end of `batchedUpdates`, only legacy sync updates",
+        user: { login: "acdlite", id: 3624098 },
+        labels: [{ id: 196858374, name: "CLA Signed" }],
+        state: "open",
+        created_at: "2021-04-10T06:54:45Z",
+      },
+      {
+        id: 854860621,
+        number: 21224,
+        title: "[Fizz] Fragments and Iterable support",
+        user: { login: "yekver", id: 1935877 },
+        labels: [{ id: 155984160, name: "Status: Unconfirmed" }],
+        state: "open",
+        created_at: "2021-04-09T21:19:19Z",
+      },
+    ];
+
     fetchMock.mockResponseOnce((_) =>
       Promise.resolve({
-        body: JSON.stringify([
-          {
-            id: 854999068,
-            number: 21229,
-            title:
-              "Fix: Don't flush discrete updates at end of `batchedUpdates`, only legacy sync updates",
-            user: { login: "acdlite", id: 3624098 },
-            labels: [{ id: 196858374, name: "CLA Signed" }],
-            state: "open",
-            created_at: "2021-04-10T06:54:45Z",
-          },
-          {
-            id: 854860621,
-            number: 21224,
-            title: "[Fizz] Fragments and Iterable support",
-            user: { login: "yekver", id: 1935877 },
-            labels: [{ id: 155984160, name: "Status: Unconfirmed" }],
-            state: "open",
-            created_at: "2021-04-09T21:19:19Z",
-          },
-        ]),
+        body: JSON.stringify(issues),
         headers: {
           link:
             '<https://api.github.com/repositories/10270250/issues?per_page=5&page=2>; rel="next", <https://api.github.com/repositories/10270250/issues?per_page=5&page=139>; rel="last"',
@@ -98,20 +100,23 @@ describe("ForgotPassword Integration", () => {
       await screen.findByRole("heading", { level: 3, name: "Results" })
     ).toBeInTheDocument();
 
-    expect(
-      await screen.findByRole("heading", {
-        level: 4,
-        name:
-          "Fix: Don't flush discrete updates at end of `batchedUpdates`, only legacy sync updates",
-      })
-    ).toBeInTheDocument();
+    const issuesUl = screen.getByRole("list", { name: "issues" });
+    const { getAllByRole } = within(issuesUl);
+    const issuesLi = getAllByRole("listitem");
 
-    expect(
-      await screen.findByRole("heading", {
-        level: 4,
-        name: "[Fizz] Fragments and Iterable support",
-      })
-    ).toBeInTheDocument();
+    expect(issuesLi).toHaveLength(2);
+
+    issuesLi.forEach((issueLi, index) => {
+      const { getByRole, getByText } = within(issueLi);
+
+      expect(
+        getByRole("heading", { level: 4, name: issues[index].title })
+      ).toBeInTheDocument();
+
+      issues[index].labels.forEach((label) => {
+        expect(getByText(label.name)).toBeInTheDocument();
+      });
+    });
   });
 
   it("Should be able to navigate", async () => {
