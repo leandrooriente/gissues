@@ -20,6 +20,6 @@ jobs:
       - name: lint
         run: yarn lint
       - name: test
-        run: yarn test -- --watchAll=false
+        run: yarn test --watchAll=false
       - name: check TS
         run: npx tsc --project ./tsconfig.json --noEmit
