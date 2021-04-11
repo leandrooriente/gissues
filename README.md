@@ -38,3 +38,39 @@ It correctly bundles React in production mode and optimizes the build for the be
 ## Deployment
 
 Pushing anything to `main` will automatically trigger the CI on `Netlify` that publishes this website to [https://gissues.netlify.app/](https://gissues.netlify.app/)
+
+## Technologies
+
+### CSS
+
+Most of the heavy work is being done by this wonderful framework called [NES.css](https://nostalgic-css.github.io/NES.css/).
+
+It's not specifically made for React, so you have to include its global classes on your React Elements.
+
+I have no intention of adding anything else that would expose CSS selectors, so I decided to also write regular CSS for this project instead of using some CSS-in-JS library or CSS Modules.
+
+### State Management
+
+I could have written this project using React Context and the Reducer Hook. The application state is quite simple and I have no intention on adding all the Github functionalities into it.
+
+I decided to use Redux and Redux Toolkit because it's been a while since I used Redux for the last time and the new Redux Toolkit reduced a lot of the required boilerplate.
+
+In terms of boilerplate, it became closer to Mobx State Tree which is interesting since its core logic is still understandable and easy to follow.
+
+### Tests
+
+I like to have 2 to 3 layers of testing besides using TypeScript and linters.
+
+Unit test for the state management logic, helper functions, and any Component that holds some complex logic on it.
+
+Integration tests with `Jest` and `React Testing Library`. My approach is to mock API requests, and the browser history by using `MemoryRouter` from `React Router`. Everything else must work as it would on a browser.
+
+This allows me to test it simulating user interactions and real user journeys using `React Testing Library`.
+
+There are several benefits of doing that using `jsdom` compared to regular `E2E`.
+
+- Your tests will run much faster since you don't have to load a whole browser.
+- You can test pretty much all the possible scenarios. Some of those scenarios are quite hard to test in a real environment due to API restrictions or hard to reproduce user journeys.
+- If implemented correctly you shouldn't have any flakiness on your tests.
+
+E2E tests are still important though, and I like to test all critical paths in a real browser using real APIs.
