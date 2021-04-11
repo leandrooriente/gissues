@@ -47,30 +47,34 @@ export const List = (): React.ReactElement => {
           <NotFound />
         ) : null}
 
-        {status === "LOADED" &&
-          issues.map((issue) => (
-            <div
-              key={issue.id}
-              className="result-item nes-container is-rounded"
-            >
-              <h4 className="nes-text">{issue.title}</h4>
+        {status === "LOADED" ? (
+          <div data-test-id="result-list">
+            {issues.map((issue) => (
+              <div
+                key={issue.id}
+                className="result-item nes-container is-rounded"
+              >
+                <h4 className="nes-text">{issue.title}</h4>
 
-              {issue.labels.map((label) => (
-                <span key={label.id} className="nes-badge">
-                  <span className="is-warning">{label.name}</span>
-                </span>
-              ))}
+                {issue.labels.map((label) => (
+                  <span key={label.id} className="nes-badge">
+                    <span className="is-warning">{label.name}</span>
+                  </span>
+                ))}
 
-              <p className="nes-text">
-                #21002 opened 25 days ago by fast-reflexes
-              </p>
-            </div>
-          ))}
+                <p className="nes-text">
+                  #21002 opened 25 days ago by fast-reflexes
+                </p>
+              </div>
+            ))}
+          </div>
+        ) : null}
 
         {hasPreviousPage || hasNextPage ? (
           <section className="navigation">
             {hasPreviousPage ? (
               <Link
+                data-test-id="previous-page-link"
                 className="nes-btn"
                 to={`/${organization}/${repository}/${currentPage - 1}`}
               >
@@ -80,6 +84,7 @@ export const List = (): React.ReactElement => {
 
             {hasNextPage ? (
               <Link
+                data-test-id="next-page-link"
                 className="nes-btn next-page"
                 to={`/${organization}/${repository}/${currentPage + 1}`}
               >

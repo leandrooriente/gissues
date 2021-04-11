@@ -33,7 +33,9 @@ export const Header = (): React.ReactElement => {
   return (
     <header className="wrap">
       <h1 className="nes-text page-title">
-        <Link to="/">GISSUES</Link>
+        <Link data-test-id="logo-home-link" to="/">
+          GISSUES
+        </Link>
       </h1>
 
       <form onSubmit={handleSubmit} className="nes-container with-title">
@@ -42,6 +44,7 @@ export const Header = (): React.ReactElement => {
           <label htmlFor="organization">Organization</label>
           <input
             required
+            data-test-id="organization-search-input"
             value={organization}
             onChange={handleOrganizationChange}
             name="organization"
@@ -55,6 +58,7 @@ export const Header = (): React.ReactElement => {
           <label htmlFor="repository">Repository</label>
           <input
             required
+            data-test-id="repository-search-input"
             value={repository}
             onChange={handleRepositoryChange}
             name="repository"
@@ -64,7 +68,7 @@ export const Header = (): React.ReactElement => {
           />
         </div>
 
-        <button className="nes-btn" type="submit">
+        <button data-test-id="search-button" className="nes-btn" type="submit">
           Search
         </button>
       </form>

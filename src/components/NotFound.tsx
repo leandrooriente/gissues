@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 
 export const NotFound = (): React.ReactElement => {
   return (
-    <Fragment>
+    <div data-test-id="not-found-page">
       <i className="nes-icon is-large heart"></i>
       <i className="nes-icon is-large heart"></i>
       <i className="nes-icon is-large heart"></i>
@@ -18,6 +18,6 @@ export const NotFound = (): React.ReactElement => {
         Try another combination like "facebook/react". There is a lot of issues
         there.
       </p>
-    </Fragment>
+    </div>
   );
 };
