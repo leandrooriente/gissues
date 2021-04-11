@@ -9,12 +9,12 @@ export const Header = (): React.ReactElement => {
     repository: repositoryURLParam,
   } = useParams<ListPageParamTypes>();
 
-  const [organization, setOrganization] = useState(organizationURLParam);
-  const [repository, setRepository] = useState(repositoryURLParam);
+  const [organization, setOrganization] = useState(organizationURLParam || "");
+  const [repository, setRepository] = useState(repositoryURLParam || "");
 
   useEffect(() => {
-    setOrganization(organizationURLParam);
-    setRepository(repositoryURLParam);
+    setOrganization(organizationURLParam || "");
+    setRepository(repositoryURLParam || "");
   }, [organizationURLParam, repositoryURLParam]);
 
   const handleSubmit = (e: React.FormEvent) => {

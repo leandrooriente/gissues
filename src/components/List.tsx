@@ -10,7 +10,11 @@ import { RootState } from "../store";
 
 export const List = (): React.ReactElement => {
   const dispatch = useDispatch();
-  const { organization, repository, page } = useParams<ListPageParamTypes>();
+  const {
+    organization = "",
+    repository = "",
+    page,
+  } = useParams<ListPageParamTypes>();
   const { list: issues, pageCount, status } = useSelector(
     (state: RootState) => {
       return state.issuesReducer;
@@ -49,7 +53,7 @@ export const List = (): React.ReactElement => {
               key={issue.id}
               className="result-item nes-container is-rounded"
             >
-              <p className="nes-text">{issue.title}</p>
+              <h4 className="nes-text">{issue.title}</h4>
 
               {issue.labels.map((label) => (
                 <span key={label.id} className="nes-badge">

@@ -4,8 +4,8 @@ import { EmptyList } from "./EmptyList";
 import { List } from "./List";
 
 export interface ListPageParamTypes {
-  organization: string;
-  repository: string;
+  organization: string | undefined;
+  repository: string | undefined;
   page: string;
 }
 

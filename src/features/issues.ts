@@ -27,7 +27,10 @@ export const fetchIssues = createAsyncThunk(
 
       return {
         status: "SUCCESS",
-        list: response.data,
+        list:
+          typeof response.data === "string"
+            ? JSON.parse(response.data)
+            : response.data,
         pageCount,
       };
     } catch (error) {
