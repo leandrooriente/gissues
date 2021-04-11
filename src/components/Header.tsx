@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
 import { ListPageParamTypes } from "./Routes";
 
+const formatGithubRepoAndOrgNames = (name: string): string =>
+  name.trim().replace(/[^A-Za-z0-9_.-]/gi, "");
+
 export const Header = (): React.ReactElement => {
   const history = useHistory();
   const {
@@ -23,11 +26,11 @@ export const Header = (): React.ReactElement => {
   };
 
   const handleOrganizationChange = (e: React.FormEvent<HTMLInputElement>) => {
-    setOrganization(e.currentTarget.value.trim());
+    setOrganization(formatGithubRepoAndOrgNames(e.currentTarget.value));
   };
 
   const handleRepositoryChange = (e: React.FormEvent<HTMLInputElement>) => {
-    setRepository(e.currentTarget.value.trim());
+    setRepository(formatGithubRepoAndOrgNames(e.currentTarget.value));
   };
 
   return (

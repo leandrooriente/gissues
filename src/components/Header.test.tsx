@@ -48,4 +48,23 @@ describe("Header", () => {
     expect(screen.getByDisplayValue("facebook")).toBeInTheDocument();
     expect(screen.getByDisplayValue("react")).toBeInTheDocument();
   });
+
+  it("Should not accept invalid characters", () => {
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <Header />
+      </MemoryRouter>
+    );
+
+    userEvent.click(screen.getByLabelText("Organization"));
+    document.activeElement &&
+      userEvent.type(document.activeElement, "facebook !@#$%^ &*()++ 🤘");
+
+    userEvent.click(screen.getByLabelText("Repository"));
+    document.activeElement &&
+      userEvent.type(document.activeElement, "react ⁄€‹›ﬁ›ﬂ›‡·°‡‚· 😢");
+
+    expect(screen.getByDisplayValue("facebook")).toBeInTheDocument();
+    expect(screen.getByDisplayValue("react")).toBeInTheDocument();
+  });
 });
