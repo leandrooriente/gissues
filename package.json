@@ -28,7 +28,7 @@
     "eject": "react-scripts eject"
   },
   "simple-git-hooks": {
-    "pre-commit": "npx lint-staged && yarn test -- --watchAll=false",
+    "pre-commit": "npx lint-staged && yarn test --watchAll=false",
     "pre-push": "npx tsc --project ./tsconfig.json --noEmit"
   },
   "eslintConfig": {
