@@ -1,19 +1,28 @@
+:root {
+  --baseColor: #f2f2f2;
+  --textColor: #212529;
+
+  --gutter: 12px;
+  --gutter-double: calc(var(--gutter) * 2);
+  --gutter-triple: calc(var(--gutter) * 3);
+}
+
 body {
-  background: #f2f2f2;
+  background: var(--baseColor);
 }
 
 .wrap {
   max-width: 980px;
-  padding: 0 10px;
+  padding: 0 var(--gutter);
   margin: 0 auto;
 }
 
 .page-title {
-  margin: 12px 0 36px;
+  margin: var(--gutter) 0 var(--gutter-triple);
 }
 
 .page-title a {
-  color: #212529;
+  color: var(--textColor);
 }
 
 .page-title a:hover {
@@ -21,19 +30,19 @@ body {
 }
 
 .title {
-  background-color: #f2f2f2 !important;
+  background-color: var(--baseColor) !important;
 }
 
 .results {
-  margin: 24px auto;
+  margin: var(--gutter-double) auto;
 }
 
 .result-item {
-  margin-bottom: 24px !important;
+  margin-bottom: var(--gutter-double) !important;
 }
 
 .loader {
-  margin: 24px 0;
+  margin: var(--gutter-double) 0;
 }
 
 .navigation {
@@ -46,7 +55,7 @@ body {
 }
 
 .nes-field {
-  margin-bottom: 24px;
+  margin-bottom: var(--gutter-double);
 }
 
 .nes-badge {
@@ -54,11 +63,11 @@ body {
   height: auto;
   font-size: 0.5rem;
   text-transform: uppercase;
-  margin: 0 15px 15px 0;
+  margin: 0 var(--gutter) var(--gutter) 0;
 }
 
 .nes-badge span {
   position: relative !important;
   display: inline-block !important;
-  padding: 0 12px !important;
+  padding: 0 var(--gutter) !important;
 }
