@@ -23,11 +23,11 @@ export const Header = (): React.ReactElement => {
   };
 
   const handleOrganizationChange = (e: React.FormEvent<HTMLInputElement>) => {
-    setOrganization(e.currentTarget.value);
+    setOrganization(e.currentTarget.value.trim());
   };
 
   const handleRepositoryChange = (e: React.FormEvent<HTMLInputElement>) => {
-    setRepository(e.currentTarget.value);
+    setRepository(e.currentTarget.value.trim());
   };
 
   return (
