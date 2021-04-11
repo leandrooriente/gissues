@@ -8,6 +8,10 @@
 
 ## Available Scripts
 
+Yarn is quite picky with Node Engines and not all the maintainers care that much about it, if you have any trouble installing the dependencies use the following flag:
+
+`yarn --ignore-engines`
+
 In the project directory, you can run:
 
 ### `yarn start`
