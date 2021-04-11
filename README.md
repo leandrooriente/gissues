@@ -2,6 +2,7 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/7d7ce97e-fe7a-4ab8-9ba7-b35634bf5a5d/deploy-status)](https://app.netlify.com/sites/gissues/deploys)
 ![test workflow](https://github.com/leandrooriente/gissues/actions/workflows/tests.yml/badge.svg)
+![e2e workflow](https://github.com/leandrooriente/gissues/actions/workflows/e2e.yml/badge.svg)
 
 [https://gissues.netlify.app/](https://gissues.netlify.app/)
 
